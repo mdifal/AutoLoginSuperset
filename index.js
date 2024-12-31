@@ -28,10 +28,10 @@ app.post("/start-login", async (req, res) => {
   const { username, password } = req.body;
   try {
     const browser = await puppeteer.launch({
-      headless: true,
-      defaultViewport: null,
-      executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
-    });
+      headless: true, // Mode headless untuk server
+      defaultViewport: null, // Menjaga layar default
+      args: ['--no-sandbox', '--disable-setuid-sandbox'] // Tambahan untuk kompatibilitas server
+  });
 
     const page = await browser.newPage();
 
